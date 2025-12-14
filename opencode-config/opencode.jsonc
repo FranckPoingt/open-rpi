@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "dark",
+  "mcp": {
+    "kit": {
+      "type": "local",
+      "command": ["uvx", "--from", "cased-kit", "kit-dev-mcp"],
+      "environment": {
+        "ANTHROPIC_API_KEY": "{env:ANTHROPIC_API_KEY}"
+      }
+    }
+  },
+  "agent": {
+    "manager": {
+      "mode": "primary",
+      "model": "anthropic/claude-haiku-4-5",
+      "tools": {
+        "bash": true,
+        "write": false
+      },
+      "permission": {
+        "bash": {
+          "bd ready": "allow",
+          "bd close": "allow",
+          "bd list": "allow",
+          "bd show": "allow",
+          "bd create": "deny",
+          "git reset": "allow",
+          "git commit": "deny",
+          "git diff": "allow"
+        }
+      }
+    }
+  }
+}
